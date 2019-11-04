@@ -1,6 +1,5 @@
 // 异步加载组件错误 组件
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -14,16 +13,14 @@ class ErrorBoundary extends Component {
     return { hasError: true }
   }
 
-  componentDidCatch(error, info) {
-    window.location.href = '/'
-  }
+  componentDidCatch(error, info) {}
 
   render() {
     if (this.state.hasError) {
-      return <p>页面好像出错了</p>
+      return <p style={{ textAlign: 'center', fontSize: '20px', marginTop: '50px'}}>页面好像出错了~</p>
     }
     return this.props.children
   }
 }
 
-export default withRouter(ErrorBoundary)
+export default ErrorBoundary
