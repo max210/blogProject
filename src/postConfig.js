@@ -1,3 +1,26 @@
 export default [
-  { name: '原型链', type: 'tech', time: '2018-2-11' }
+  { name: '自定义 React Hooks', type: 'tech', time: '2019-9-18' },
+  { name: '前端文件格式转化及上传', type: 'tech', time: '2019-9-13' },
+  { name: 'Docker', type: 'tech', time: '2019-3-28' },
+  { name: 'http和cors跨域', type: 'tech', time: '2019-2-15' },
+  { name: 'Linux相关', type: 'tech', time: '2019-2-11' },
+  { name: 'NodeJs', type: 'tech', time: '2019-1-15' },
+  { name: 'mongoDB', type: 'tech', time: '2019-1-15' },
+  { name: 'nginx', type: 'tech', time: '2019-1-15' },
+  { name: '部署', type: 'tech', time: '2019-1-15' },
+  { name: 'Git', type: 'tech', time: '2019-1-8' },
+  { name: 'CodeWars', type: 'tech', time: '2018-12-6' },
+  { name: 'js代码片段', type: 'tech', time: '2018-7-30' },
+  { name: '关于Promise', type: 'tech', time: '2018-7-3' },
+  { name: '跑步', type: 'though', time: '2018-6-21' },
+  { name: '一片叶子', type: 'though', time: '2018-5-23' },
+  { name: 'github第三方登录', type: 'tech', time: '2018-5-6' },
+  { name: 'Ramda之常见的数组方法', type: 'tech', time: '2018-5-3' },
+  { name: 'Vue中使用axios', type: 'tech', time: '2018-4-24' },
+  { name: '编程之路', type: 'though', time: '2018-4-18' },
+  { name: 'ES6中的 for..of 循环', type: 'tech', time: '2018-4-17' },
+  { name: 'ES6中的Array.from()', type: 'tech', time: '2018-4-14' },
+  { name: 'node与浏览器中JS的事件循环', type: 'tech', time: '2018-4-12' },
+  { name: 'koa-router传递多个中间件', type: 'tech', time: '2018-4-10' },
+  { name: '小程序分享', type: 'tech', time: '2018-4-8' }
 ]
