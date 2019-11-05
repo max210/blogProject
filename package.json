@@ -36,6 +36,7 @@
     "jest-watch-typeahead": "0.4.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "mime": "^2.4.4",
     "mini-css-extract-plugin": "0.8.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.5.0",
@@ -44,6 +45,7 @@
     "postcss-normalize": "7.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "4.0.1",
+    "qiniu": "^7.2.2",
     "query-string": "^6.8.3",
     "react": "^16.11.0",
     "react-app-polyfill": "^1.0.4",
@@ -68,7 +70,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "cdn": "node scripts/cdn.js",
+    "deploy": "yarn build && node scripts/cdn.js && scp ./build/index.html root@39.98.137.67:/root/app/blog"
   },
   "eslintConfig": {
     "extends": "react-app"
