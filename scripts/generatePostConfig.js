@@ -2,7 +2,6 @@ const fs = require('fs')
 const path = require('path')
 const { format } = require('date-fns')
 
-const configArray = []
 const srcPath = path.join(__dirname, '..', 'src')
 const markdownPath = path.join(__dirname, '..', 'src/markdown')
 const isThought = fileName => (/\[想法\]/).test(fileName)
@@ -18,6 +17,7 @@ function sortByTime(a, b) {
 
 // 生成配置的数组
 function generateArray(markdowns) {
+  const configArray = []
   markdowns.map(name => {
     const { mtime } = fs.statSync(`${markdownPath}/${name}`)
     configArray.push({

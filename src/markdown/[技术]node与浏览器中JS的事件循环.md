@@ -73,7 +73,7 @@ node官网上有对`Event Loop`的[介绍](https://nodejs.org/en/docs/guides/eve
 初步的认识，如有错误，还请指正～
 
 ###### 参考文章
-`https://funteas.com/topic/5a64e9482630e6f31583701d`
-`http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html`
-`http://www.ruanyifeng.com/blog/2014/10/event-loop.html`
-`https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/`
+https://funteas.com/topic/5a64e9482630e6f31583701d
+http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html
+http://www.ruanyifeng.com/blog/2014/10/event-loop.html
+https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
