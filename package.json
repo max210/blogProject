@@ -15,6 +15,7 @@
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "css-loader": "2.1.1",
+    "date-fns": "^2.6.0",
     "dotenv": "6.2.0",
     "dotenv-expand": "5.1.0",
     "eslint": "^6.1.0",
@@ -72,7 +73,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "cdn": "node scripts/cdn.js",
-    "deploy": "yarn build && node scripts/cdn.js && scp ./build/index.html root@39.98.137.67:/root/app/blog"
+    "generatePostConfig": "node scripts/generatePostConfig.js",
+    "deploy": "yarn generatePostConfig && yarn build && yarn cdn && scp ./build/index.html root@39.98.137.67:/root/app/blog"
   },
   "eslintConfig": {
     "extends": "react-app"

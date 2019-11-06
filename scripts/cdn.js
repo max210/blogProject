@@ -2,21 +2,16 @@ const qiniu = require('qiniu')
 const fs = require('fs')
 const path = require('path')
 const mime = require('mime');
-const { accessKey, secretKey } = require('./qiniuConfig')
+const { accessKey, secretKey, scope } = require('./qiniuConfig')
 
 const mac = new qiniu.auth.digest.Mac(accessKey, secretKey)
-const options = {
-  scope: 'max210-blog'
-}
-const putPolicy = new qiniu.rs.PutPolicy(options)
+const putPolicy = new qiniu.rs.PutPolicy({ scope })
 const uploadToken = putPolicy.uploadToken(mac)
-
 const config = new qiniu.conf.Config()
 config.zone = qiniu.zone.Zone_z0
-
-const localFile = '/Users/maximilian/blog/src/markdown/原型链.md'
 const formUploader = new qiniu.form_up.FormUploader(config)
 
+// 七牛上传函数
 function uploadFile(uploadToken, key, localFile, putExtra) {
   return new Promise((resolve, reject) => {
     formUploader.putFile(uploadToken, key, localFile, putExtra, (respErr, respBody, respInfo) => {
@@ -32,21 +27,22 @@ function uploadFile(uploadToken, key, localFile, putExtra) {
   })
 }
 
+// 获取文件路径
 function getBuildFilePath(fileName = '') {
   if (fileName) return path.join(__dirname, '..', `build/${fileName}`)
   return path.join(__dirname, '..', 'build')
 }
 
-const files = fs.readdirSync(getBuildFilePath())
-async function upload() {
+// 上传打包后的文件到七牛
+async function upload(files) {
   console.log('uploading files...')
-  await Promise.all(files.map(file => {
-    const putExtra = new qiniu.form_up.PutExtra(null, null, mime.getType(file))
-    uploadFile(uploadToken, file, getBuildFilePath(file), putExtra)
+  await Promise.all(files.map(fileName => {
+    const putExtra = new qiniu.form_up.PutExtra(null, null, mime.getType(fileName))
+    uploadFile(uploadToken, fileName, getBuildFilePath(fileName), putExtra)
   }))
   console.log('upload done!!!')
 }
 
 try {
-  upload()
+  upload(fs.readdirSync(getBuildFilePath()))
 } catch (e) { throw '======= upload error ======'}
