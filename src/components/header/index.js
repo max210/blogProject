@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import style from './index.module.less'
 import { withRouter } from 'react-router-dom'
 import menuConfig from './menuConfig'
+import { Theme } from '@/App'
 
 function Header(props) {
   const { history } = props
+  const mode = useContext(Theme)
 
   function goPage(menu) {
     const path = {
@@ -19,7 +21,7 @@ function Header(props) {
   }
 
   return (
-    <div className={style.headerContainer}>
+    <div className={`${style.headerContainer} ${mode === 'dark' ? style.dark : ''}`}>
       <div className={style.homeBtn} onClick={goHome}>
         <img src={require('@/common/img/home.png')} alt='首页' />
         <p>max's blog</p>

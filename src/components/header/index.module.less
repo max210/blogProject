@@ -3,6 +3,21 @@
   justify-content: space-between;
   font-size: 14px;
   color: #FFF;
+  &.dark {
+    .homeBtn {
+      &:hover {
+        background: #ffa7c4;
+      }
+    }
+    .menuContainer {
+      .menuItem {
+        background: #000;
+        &:hover {
+          background: #ffa7c4;
+        }
+      }
+    }
+  }
   .homeBtn {
     padding: 8px 20px;
     background: #000;
@@ -29,12 +44,36 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      border-radius: 0 0 10px 10px;
       &:hover {
         background: #c33;
       }
       & > img {
         width: 20px;
         margin-right: 2px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .headerContainer {
+    font-size: 14px;
+    .homeBtn {
+      padding: 8px 10px;
+      & > img {
+        width: 14px;
+        margin-right: 2px;
+      }
+    }
+    .menuContainer {
+      .menuItem {
+        padding: 8px 8px;
+        margin: 0 2px;
+        & > img {
+          width: 14px;
+          margin-right: 2px;
+        }
       }
     }
   }

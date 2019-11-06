@@ -1,5 +1,17 @@
 .postContainer {
-  padding: 5px 10px 20px 10px;
+  padding: 5px 12px 20px 12px;
+  &.dark {
+    .titleContianer {
+      .title {
+        color: #FFFFFF;
+      }
+    }
+    .postContent {
+      p, li {
+        color: rgba(255, 255, 255, .88);
+      }
+    }
+  }
   .titleContianer {
     padding: 80px 0 50px 0;
     text-align: center;
@@ -16,16 +28,36 @@
     }
   }
   .postContent {
-    p {
+    p, li, a {
       padding: 8px 0;
       line-height: 1.5;
       vertical-align: baseline;
       color: #464646;
       font-family: 'Lucida Sans Unicode',Verdana, Arial, Sans-Serif;
     }
+    a {
+      text-decoration: underline;
+    }
     code {
-      color: #7a7a7a;
+      display: block;
+      color: #b9bdb6;
+      font-size: 14px;
+      line-height: 1.5;
+      overflow: auto;
+      border: 1px solid #999;
+      background-color: #1b2426;
+      border-radius: 5px;
+      padding: 10px;
       font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", onospace;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .postContainer .titleContianer {
+    padding: 40px 0 50px 0;
+    .title {
+      font-size: 30px;
     }
   }
 }

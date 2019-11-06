@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { withRouter } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import queryString from 'query-string'
+import postConfig from '@/postConfig'
 import style from './index.module.less'
+import { Theme } from '@/App'
 
 function Post(props) {
-  const { postName, postTime } = queryString.parse(props.history.location.search)
+  const { name } = queryString.parse(props.history.location.search)
   const [markdownSource, setMarkdownSource] = useState('')
 
+  const mode = useContext(Theme)
+
+  const postNameEqual = post => post.name === name
+
   useEffect(() => {
-    postName && import(`@/markdown/${postName}.md`).then(res => setMarkdownSource(res.default))
-  }, [postName])
+    name && import(`@/markdown/${name}.md`).then(res => setMarkdownSource(res.default))
+  }, [name])
 
   return (
-    <div className={style.postContainer}>
+    <div className={`${style.postContainer} ${mode === 'dark' ? style.dark : ''}`}>
       <div className={style.titleContianer}>
-        <p className={style.title}>{postName}</p>
-        <p className={style.time}>{postTime}</p>
+        <p className={style.title}>{name}</p>
+        <p className={style.time}>{postConfig.find(postNameEqual).time}</p>
       </div>
       <div className={style.postContent}>
         <ReactMarkdown source={markdownSource} />

@@ -2,13 +2,13 @@ HTTP包括http请求和http响应
 
 ##### http请求包括：
 
-* 请求行（`请求方法 URL HTTP/版本号`， 比如：`GET http://m.baidu.com/ HTTP/1.1`，`get`请求的参数会直接追加在url上，而post请求的参数是存在请求体中）
+* 请求行 请求方法 URL HTTP/版本号 ， 比如： GET http://m.baidu.com/ HTTP/1.1 ， get 请求的参数会直接追加在url上，而post请求的参数是存在请求体中）
 * 请求头
 * 请求体
 
-请求头中`Content-Type`的值常见的有`application/x-www-form-urlencoded`和`application/json`以及`multipart/form-data`。
+请求头中 Content-Type 的值常见的有 application/x-www-form-urlencoded 和 application/json 以及 multipart/form-data 。
 
-浏览器的原生`<form>`表单，如果不设置`enctype`属性，那么最终就会以`application/x-www-form-urlencoded`方式提交数据，提交的数据按照 `key1=val1&key2=val2`的方式进行编码，`key`和`val`都进行了`URL`转码：
+浏览器的原生 <form> 表单，如果不设置 enctype 属性，那么最终就会以 application/x-www-form-urlencoded 方式提交数据，提交的数据按照  key1=val1&key2=val2 的方式进行编码， key 和 val 都进行了 URL 转码：
 
 ```
 POST http://www.example.com HTTP/1.1
@@ -17,7 +17,7 @@ Content-Type: application/x-www-form-urlencoded;charset=utf-8
 title=test&sub%5B%5D=1&sub%5B%5D=2&sub%5B%5D=3
 ```
 
-`application/json` post参数以json的形式传送
+application/json post参数以json的形式传送
 
 ```
 POST http://www.example.com HTTP/1.1
@@ -26,17 +26,17 @@ Content-Type: application/json;charset=utf-8
 {"title":"test","sub":[1,2,3]}
 ```
 
-我们使用表单上传文件时，必须让 <form> 表单的 `enctype` 等于 multipart/form-data
+我们使用表单上传文件时，必须让 <form> 表单的 enctype 等于 multipart/form-data
 
 ##### http响应包括：
 
-* 状态行（`HTTP/版本号 返回码 返回码描述`,  比如：`HTTP/1.1 200 OK`）
-* 消息头（`Content-Encoding`用作媒体类型的修饰符，比如Content-Encoding：gzip。`Content-Type`指明发送给接收者的实体正文的媒体类型。Expires实体报头域给出响应过期的日期和时间。）
+* 状态行（HTTP/版本号 返回码 返回码描述,  比如：HTTP/1.1 200 OK）
+* 消息头（Content-Encoding用作媒体类型的修饰符，比如Content-Encoding：gzip。Content-Type指明发送给接收者的实体正文的媒体类型。Expires实体报头域给出响应过期的日期和时间。）
 * 消息体（服务器返回的资源的内容，可能是html，也可能是json数据）
 
 ##### cors跨域
 
-跨域的方案有很多种，看了阮一峰的关于`cors`文章，对`cors`有了理解，cors跨域主要是要在服务端进行设置，以koa为例
+跨域的方案有很多种，看了阮一峰的关于cors文章，对cors有了理解，cors跨域主要是要在服务端进行设置，以koa为例
 
 ```
 import Koa from 'koa'
@@ -60,7 +60,7 @@ app.use((ctx, next) => {
 app.listen(3000)
 ```
 
-前端用`axios`，需要设置一下`cookie`
+前端用axios，需要设置一下cookie
 
 ```
 axios.defaults.withCredentials = true  // axios请求携带cookie

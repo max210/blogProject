@@ -1,5 +1,16 @@
 .container {
   padding: 50px 10px 0 10px;
+  &.dark {
+    .post {
+      .title {
+        color: #ffa7c4;
+        border-left: 2px solid #ffa7c4;
+        &:hover {
+          color: #ed779e;
+        }
+      }
+    }
+  }
   .info {
     font-size: 26px;
     font-style: italic;
@@ -10,7 +21,7 @@
     .title {
       display: inline-block;
       color: #D23669;
-      font-size: 28px;
+      font-size: 24px;
       border-left: 2px solid #D23669;
       padding-left: 10px;
       cursor: pointer;
@@ -24,5 +35,11 @@
       font-style: italic;
       padding-left: 10px;
     }
+  }
+}
+
+@media and screen (max-width: 768px) {
+  .container .post .title {
+    font-size: 20px;
   }
 }
