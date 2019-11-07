@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import queryString from 'query-string'
 import postConfig from '@/postConfig'
 import style from './index.module.less'
+import Loading from '@/components/loading'
 import { Theme } from '@/App'
 import { handlePostName } from '@/utils'
 
@@ -26,7 +27,7 @@ function Post(props) {
         <p className={style.time}>最后更新：{postConfig.find(postNameEqual).time}</p>
       </div>
       <div className={style.postContent}>
-        <ReactMarkdown source={markdownSource} />
+        {markdownSource ? <ReactMarkdown source={markdownSource} /> : <Loading />}
       </div>
     </div>
   )
