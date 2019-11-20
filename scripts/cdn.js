@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const mime = require('mime');
 const { accessKey, secretKey, scope } = require('./qiniuConfig')
-const log = console.log
+const { log } = console
 
 const mac = new qiniu.auth.digest.Mac(accessKey, secretKey)
 const putPolicy = new qiniu.rs.PutPolicy({ scope })
