@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useMemo } from 'react'
 import { withRouter } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import queryString from 'query-string'
@@ -10,26 +10,31 @@ import { handlePostName } from '@/utils'
 import './markdown.css'
 
 function Post(props) {
-  const { name } = queryString.parse(props.history.location.search)
   const [markdownSource, setMarkdownSource] = useState('')
-
+  const { n } = queryString.parse(props.history.location.search)
   const mode = useContext(Theme)
-
-  const postNameEqual = post => post.name === name
+  const postName = decodeURIComponent(n)
+  const post = postConfig.find(post => post.name === postName)
 
   useEffect(() => {
-    name && import(`@/markdown/${name}.md`).then(res => setMarkdownSource(res.default))
-  }, [name])
+    post && import(`@/markdown/${postName}.md`).then(res => setMarkdownSource(res.default))
+  }, [postName])
 
   return (
     <div className={`${style.postContainer} ${mode === 'dark' ? style.dark : ''}`}>
-      <div className={style.titleContianer}>
-        <p className={style.title}>{handlePostName(name)}</p>
-        <p className={style.time}>最后更新：{postConfig.find(postNameEqual).time}</p>
-      </div>
-      <div className={`${style.postContent} markdown-body`}>
-        {markdownSource ? <ReactMarkdown source={markdownSource} /> : <Loading />}
-      </div>
+      {markdownSource ? (
+        <>
+          <div className={style.titleContianer}>
+            <p className={style.title}>{handlePostName(postName)}</p>
+            <p className={style.time}>最后更新：{post && post.time}</p>
+          </div>
+          <div className={`${style.postContent} markdown-body`}>
+            {markdownSource ? <ReactMarkdown source={markdownSource} /> : <Loading />}
+          </div>
+        </>
+      ) : (
+        <p className={style.errorInfo}>页面好像出错了~~</p>
+      )}
     </div>
   )
 }

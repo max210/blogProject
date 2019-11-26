@@ -12,7 +12,7 @@ function Home(props) {
   function goPost(post) {
     history.push({
       pathname: '/post',
-      search: `name=${post.name}`
+      search: `n=${encodeURIComponent(post.name)}`
     })
   }
 
