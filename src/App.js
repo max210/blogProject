@@ -11,7 +11,7 @@ import style from './App.module.less'
 export const Theme = React.createContext()
 
 function App() {
-  const [mode, setMode] = useState('light')
+  const [mode, setMode] = useState((localStorage && localStorage.getItem('theme')) || 'light')
 
   return (
     <BrowserRouter>

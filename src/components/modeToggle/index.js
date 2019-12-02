@@ -9,7 +9,9 @@ function ModelToggle(props) {
   const mode = useContext(Theme)
 
   function toggle() {
-    changeMode(modeList.find(item => item !== mode))
+    const newMode = modeList.find(item => item !== mode)
+    changeMode(newMode)
+    localStorage && localStorage.setItem('theme', newMode)
   }
 
   return (

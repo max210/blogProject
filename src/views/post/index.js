@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { withRouter } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import queryString from 'query-string'
@@ -18,7 +18,7 @@ function Post(props) {
 
   useEffect(() => {
     post && import(`@/markdown/${postName}.md`).then(res => setMarkdownSource(res.default))
-  }, [postName])
+  }, [postName, post])
 
   return (
     <div className={`${style.postContainer} ${mode === 'dark' ? style.dark : ''}`}>
