@@ -1,19 +1,16 @@
 import React, { useContext } from 'react'
-import { withRouter } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import postConfig from '@/postConfig'
 import style from './index.module.less'
 import { Theme } from '@/App'
 import { handlePostName } from '@/utils'
 
 function Home(props) {
-  const { history } = props
+  const history = useHistory()
   const mode = useContext(Theme)
 
   function goPost(post) {
-    history.push({
-      pathname: '/post',
-      search: `n=${encodeURIComponent(post.name)}`
-    })
+    history.push(`/post/${encodeURIComponent(post.name)}`)
   }
 
   return (
@@ -28,4 +25,4 @@ function Home(props) {
   )
 }
 
-export default withRouter(Home)
+export default Home

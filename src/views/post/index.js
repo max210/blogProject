@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { withRouter } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
-import queryString from 'query-string'
 import postConfig from '@/postConfig'
 import style from './index.module.less'
 import Loading from '@/components/loading'
@@ -11,9 +10,9 @@ import './markdown.css'
 
 function Post(props) {
   const [markdownSource, setMarkdownSource] = useState('')
-  const { n } = queryString.parse(props.history.location.search)
+  let { name } = useParams()
   const mode = useContext(Theme)
-  const postName = decodeURIComponent(n)
+  const postName = decodeURIComponent(name)
   const post = postConfig.find(post => post.name === postName)
 
   useEffect(() => {
@@ -39,4 +38,4 @@ function Post(props) {
   )
 }
 
-export default withRouter(Post)
+export default Post

@@ -1,24 +1,21 @@
 import React, { useContext } from 'react'
-import { withRouter } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import queryString from 'query-string'
 import postConfig from '@/postConfig'
 import { Theme } from '@/App'
 import style from './index.module.less'
 import { handlePostName } from '@/utils'
 
-const thoughtInfo = '[想法] inner peace'
+const thoughtInfo = '[想法] Inner Peace'
 const techInfo = '[技术] 不断重复、不断总结'
 
 function Label(props) {
-  const { history } = props
+  const history = useHistory()
   const mode = useContext(Theme)
   const { type } = queryString.parse(history.location.search)
 
   function goPost(post) {
-    history.push({
-      pathname: '/post',
-      search: `n=${encodeURIComponent(post.name)}`
-    })
+    history.push(`/post/${encodeURIComponent(post.name)}`)
   }
 
   function getTypePost(post) {
@@ -38,4 +35,4 @@ function Label(props) {
   )
 }
 
-export default withRouter(Label)
+export default Label

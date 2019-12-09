@@ -19,7 +19,7 @@ export default [
     exact: true
   },
   {
-    path: '/post',
+    path: '/post/:name',
     name: '文章',
     component: Post,
     exact: true
