@@ -74,8 +74,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "cdn": "node scripts/cdn.js",
-    "generatePostConfig": "node scripts/generatePostConfig.js",
-    "deploy": "yarn generatePostConfig && yarn build && scp -r ./build/* root@max210.cn:/root/app/blog"
+    "postConfig": "node scripts/generatePostConfig.js",
+    "deploy": "yarn postConfig && yarn build && scp -r ./build/* root@max210.cn:/root/app/blog"
   },
   "eslintConfig": {
     "extends": "react-app"

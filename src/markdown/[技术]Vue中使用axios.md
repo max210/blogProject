@@ -4,7 +4,7 @@
 
 ##### 如何在vue中全局使用axios
 
-两种方法，一种直接把axios挂载到vue构造函数的prototype属性上，组件中通过this.axios来拿到axios
+有两种方法，一种直接把axios挂载到vue构造函数的prototype属性上，组件中通过this.axios来拿到axios
 第二种方法就是通过vue-axios来全局使用axios，组件中也是通过this.axios来拿到axios
 
 ```

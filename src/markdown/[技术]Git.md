@@ -64,4 +64,4 @@
 
 - 删除远程tag `git push origin :refs/tags/<tagname>`
 
-- `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"` 新生成 ssh key 
+- `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"` 新生成 ssh key

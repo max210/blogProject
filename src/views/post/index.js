@@ -10,18 +10,21 @@ import './markdown.css'
 
 function Post(props) {
   const [markdownSource, setMarkdownSource] = useState('')
+  const [postError, setPostError] = useState(false)
   let { name } = useParams()
   const mode = useContext(Theme)
   const postName = decodeURIComponent(name)
   const post = postConfig.find(post => post.name === postName)
 
   useEffect(() => {
-    post && import(`@/markdown/${postName}.md`).then(res => setMarkdownSource(res.default))
+    post ? import(`@/markdown/${postName}.md`).then(res => setMarkdownSource(res.default)) : setPostError(true)
   }, [postName, post])
 
   return (
     <div className={`${style.postContainer} ${mode === 'dark' ? style.dark : ''}`}>
-      {markdownSource ? (
+      {postError ? (
+        <p className={style.errorInfo}>页面好像出错了~~</p>
+      ) : (
         <>
           <div className={style.titleContianer}>
             <p className={style.title}>{handlePostName(postName)}</p>
@@ -31,8 +34,6 @@ function Post(props) {
             {markdownSource ? <ReactMarkdown source={markdownSource} /> : <Loading />}
           </div>
         </>
-      ) : (
-        <p className={style.errorInfo}>页面好像出错了~~</p>
       )}
     </div>
   )

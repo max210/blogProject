@@ -12,7 +12,7 @@ function getPostType(postName) {
 }
 
 function sortByTime(a, b) {
-  return new Date(b.time) - new Date(a.time)
+  return new Date(b.Timestamp) - new Date(a.Timestamp)
 }
 
 // 生成配置的数组
@@ -23,6 +23,7 @@ function generateArray(markdowns) {
     configArray.push({
       name: name.replace('.md', ''),
       type: getPostType(name),
+      Timestamp: new Date(mtime).getTime(),
       time: format(mtime, 'yyyy-MM-dd')
     })
   })
