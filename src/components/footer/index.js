@@ -9,7 +9,7 @@ function Footer() {
           <img src={require('@/common/img/wechat.jpg')} alt='1697云开见日' />
           <p>欢迎关注个人公众号～</p>
         </div>
-        <p>made by Maximilian</p>
+        <p>made by Maximilian <a href="https://github.com/max210" target="_blank" rel="noopener noreferrer">GitHub</a></p>
       </div>
     </div>
   )
