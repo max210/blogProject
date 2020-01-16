@@ -11,6 +11,7 @@ function Footer() {
         </div>
         <p>made by Maximilian <a href="https://github.com/max210" target="_blank" rel="noopener noreferrer">GitHub</a></p>
       </div>
+      <a className={style.a} href='http://beian.miit.gov.cn' target='_blank' rel='noopener noreferrer'>京ICP备19052426号-1</a>
     </div>
   )
 }
