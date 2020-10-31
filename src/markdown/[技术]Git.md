@@ -34,6 +34,8 @@
 
 - 推送名字为name的远程仓库的branch分支 `git push name branch`
 
+- 更新远程分支列表 `git remote update origin -p`
+
 - 新建并进入一个名字为branch的分支 可选参数指在某个分支基础上新建 `git checkout -b branch [remote/master]`
 
 - 切到名字为branch的分支 `git checkout branch`
