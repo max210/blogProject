@@ -3,13 +3,13 @@ export default [
     name: '想法',
     iconSrc: require('@/common/img/thought.png'),
     pathname: '/label',
-    query: { type: 'thought' }
+    query: { type: 'thinking' }
   },
   {
     name: '技术',
     iconSrc: require('@/common/img/tech.png'),
     pathname: '/label',
-    query: { type: 'tech' }
+    query: { type: 'code' }
   },
   {
     name: '关于',

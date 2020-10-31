@@ -5,10 +5,9 @@ import postConfig from '@/postConfig'
 import style from './index.module.less'
 import Loading from '@/components/loading'
 import { Theme } from '@/App'
-import { handlePostName } from '@/utils'
 import './markdown.css'
 
-function Post(props) {
+function Post() {
   const [markdownSource, setMarkdownSource] = useState('')
   const [postError, setPostError] = useState(false)
   let { name } = useParams()
@@ -17,7 +16,15 @@ function Post(props) {
   const post = postConfig.find(post => post.name === postName)
 
   useEffect(() => {
-    post ? import(`@/markdown/${postName}.md`).then(res => setMarkdownSource(res.default)) : setPostError(true)
+    if (post) {
+      Promise.any([
+        import(`@/markdown/code/${postName}.md`),
+        import(`@/markdown/thinking/${postName}.md`)
+      ])
+      .then(res => setMarkdownSource(res.default))
+    } else {
+      setPostError(true)
+    }
   }, [postName, post])
 
   return (
@@ -25,16 +32,16 @@ function Post(props) {
       {postError ? (
         <p className={style.errorInfo}>页面好像出错了~~</p>
       ) : (
-        <>
-          <div className={style.titleContianer}>
-            <p className={style.title}>{handlePostName(postName)}</p>
-            <p className={style.time}>最后更新：{post && post.time}</p>
-          </div>
-          <div className={`${style.postContent} markdown-body`}>
-            {markdownSource ? <ReactMarkdown source={markdownSource} /> : <Loading />}
-          </div>
-        </>
-      )}
+          <>
+            <div className={style.titleContianer}>
+              <p className={style.title}>{postName}</p>
+              <p className={style.time}>最后更新：{post && post.time}</p>
+            </div>
+            <div className={`${style.postContent} markdown-body`}>
+              {markdownSource ? <ReactMarkdown source={markdownSource} /> : <Loading />}
+            </div>
+          </>
+        )}
     </div>
   )
 }
