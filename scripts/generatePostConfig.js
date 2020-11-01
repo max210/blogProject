@@ -12,7 +12,9 @@ function sortByTime(a, b) {
 
 function readFileToList(path, type) {
   const result = []
-  fs.readdirSync(path).map(name => {
+  fs.readdirSync(path).forEach(name => {
+    if (name === '.DS_Store') return;
+
     const { mtime } = fs.statSync(`${path}/${name}`)
     result.push({
       name: name.replace('.md', ''),
