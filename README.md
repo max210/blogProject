@@ -1,10 +1,13 @@
 ### 个人博客项目
 
-start
+- start
 yarn start
 
-build
+- build
 yarn build
 
-deploy
+- deploy
 yarn deploy
+
+- action
+push 后自动发不到 github page
