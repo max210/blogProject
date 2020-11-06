@@ -1,17 +1,13 @@
 ### 个人博客项目
 
 - start
-
-yarn start
+`yarn start`
 
 - build
-
-yarn build
+`yarn build`
 
 - deploy
-
-yarn deploy
+`yarn deploy`
 
 - action
-
-push 后自动发不到 github page
+`push 后自动发布到 github page`
