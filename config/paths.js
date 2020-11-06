@@ -33,10 +33,8 @@ const getPublicUrl = appPackageJson =>
 // like /todos/42/static/js/bundle.7289d.js. We have to know the root.
 function getServedPath(appPackageJson) {
   const publicUrl = getPublicUrl(appPackageJson);
-  // const servedUrl =
-  //   envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/blog');
   const servedUrl =
-    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : './');
+    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/blog');
   return ensureSlash(servedUrl, true);
 }
 
