@@ -14,8 +14,8 @@ function Home() {
 
   return (
     <div className={`${style.container} ${mode === 'dark' ? style.dark : ''}`}>
-      {postConfig.map(post => (
-        <div className={style.post} key={post.name}>
+      {postConfig.map((post, index) => (
+        <div className={style.post} key={index}>
           <p className={style.title} onClick={goPost.bind(null, post)}>{post.name}</p>
           <p className={style.time}>最后更新：{post.time}</p>
         </div>

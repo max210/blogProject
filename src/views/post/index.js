@@ -17,11 +17,8 @@ function Post() {
 
   useEffect(() => {
     if (post) {
-      Promise.any([
-        import(`@/markdown/code/${postName}.md`),
-        import(`@/markdown/thinking/${postName}.md`)
-      ])
-      .then(res => setMarkdownSource(res.default))
+      import(`@/markdown/${post.type}/${postName}.md`)
+        .then(res => setMarkdownSource(res.default)).catch(console.log)
     } else {
       setPostError(true)
     }
